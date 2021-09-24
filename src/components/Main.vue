@@ -28,7 +28,7 @@ export default {
   },
   data() {
       return {
-          APIurl: 'https://api.themoviedb.org/3/search/movie?api_key=426a628a380ecaa161275bf9fc54a798&query=rick&language=it-IT',
+          APIurl: 'https://api.themoviedb.org/3/search/movie?api_key=426a628a380ecaa161275bf9fc54a798&query=String&language=it-IT',
           moviesList: [],
           searchText: ''
       }
@@ -43,11 +43,10 @@ export default {
       }
 
       let filteredList = this.moviesList.filter( item => {
-        return item.name
+        return item.title
                   .toLowerCase()
                   .includes(this.searchText.toLowerCase());
       })
-
       return filteredList;
     }
   },  
