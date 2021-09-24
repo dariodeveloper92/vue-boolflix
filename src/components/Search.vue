@@ -23,6 +23,7 @@
 <script>
 export default {
     name: 'Search',
+    emits:['performSearch'],
     data() {
         return {
             inputText:'',
