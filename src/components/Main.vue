@@ -4,9 +4,9 @@
           <div class="col-12" >
                 <Search @performSearch="searchMovie" />
               </div>
-            <div class="box-movie">
+            <div class="box-movie row">
               <!-- Stampo la lista dei film ottenuta tramite Axios -->
-              <div v-for="(movie, index) in filteredMoviesList" :key="index" class="lista">
+              <div v-for="(movie, index) in filteredMoviesList" :key="index" class="lista col-12 col-md-6 col-lg-2">
                   <Movie :film="movie" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
               </div>
             </div>
@@ -78,7 +78,7 @@ export default {
         #container-main {
             width: 100%;
             height: 100%;
-            // padding: 30px;
+             padding: 30px;
             // display: flex;
             // justify-content: space-around;
             // position: relative;
