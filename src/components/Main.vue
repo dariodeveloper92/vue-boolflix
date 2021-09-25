@@ -1,14 +1,14 @@
 <template>
     <main>
         <section id="container-main">
-            <div class="box-movie">
-              <div class="col-12" >
+          <div class="col-12" >
                 <Search @performSearch="searchMovie" />
               </div>
-                <!-- Stampo la lista dei film ottenuta tramite Axios -->
-                <div v-for="(movie, index) in filteredMoviesList" :key="index" class="col-4 col-md-4 col-lg-2 mb-2">
-                    <Movie :film="movie" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
-                </div>
+            <div class="box-movie">
+              <!-- Stampo la lista dei film ottenuta tramite Axios -->
+              <div v-for="(movie, index) in filteredMoviesList" :key="index" class="lista">
+                  <Movie :film="movie" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
+              </div>
             </div>
             
         </section>
@@ -73,25 +73,30 @@ export default {
         width: 100%;
         height: 90vh;
         background-color: #1A253A;
+        position: absolute;
 
         #container-main {
             width: 100%;
             height: 100%;
-            padding: 30px;
-            display: flex;
-            justify-content: space-around;
-            position: relative;
-            //display: flex;
-
+            // padding: 30px;
+            // display: flex;
+            // justify-content: space-around;
+            // position: relative;
+            
             .box-movie {
-                width: 70%;
+                width: 100%;
                 height: 100%;
                 background-color: white;
                 position: relative;
-                //display: flex;
-                //justify-content: center;
-                //align-items: center;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            
+              .lista {
+                display: flex;
+              }
             }
+
         }
     }
 </style>
