@@ -27,10 +27,11 @@ export default {
   },
   data() {
       return {
-          APIurl: 'https://api.themoviedb.org/3/search/movie?api_key=426a628a380ecaa161275bf9fc54a798&query=String&language=it-IT',
+          APIurl: 'https://api.themoviedb.org/3/search/movie?api_key=426a628a380ecaa161275bf9fc54a798&query=movie&language=it-IT',
           apiKey: '79938ff93f3e31c05b660bffed55ce1f',
           pathImg: 'https://image.tmdb.org/t/p/',
           widithImg: 'http://image.tmdb.org/t/p/w500/',
+          language: 'https://www.countryflags.io/jp/flat/64.png',
           moviesList: [],
           serieTvList: [],
           searchText: ''
