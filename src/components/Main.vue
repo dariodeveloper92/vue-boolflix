@@ -31,7 +31,7 @@ export default {
           apiKey: '79938ff93f3e31c05b660bffed55ce1f',
           pathImg: 'https://image.tmdb.org/t/p/',
           widithImg: 'http://image.tmdb.org/t/p/w500/',
-          language: 'https://www.countryflags.io/jp/flat/64.png',
+          //language: 'https://www.countryflags.io/jp/flat/64.png',
           moviesList: [],
           serieTvList: [],
           searchText: ''

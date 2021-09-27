@@ -24,10 +24,14 @@
                             <h4> language: {{ film.original_language }} </h4>
                             <h5> vote: {{ film.vote_average }}
                                 <img 
-                                class=" flag img-fluid mb-3"
-                                :src="'https://www.countryflags.io/gb/flat/64.png'"
-                                :alt="film.name"
-                            >
+                                    class=" flag img-fluid mb-3"
+                                    :src="'https://www.countryflags.io/gb/flat/64.png'"
+                                    :alt="film.name"
+                                >
+                                <!-- <img 
+                                    v-if="flagExists(film.original_language)"
+                                    :src="require('../assets/flag-${lang}.png' + film.original_language + '.png')"
+                                > -->
                             </h5>
                         </div>
                     </div>
@@ -40,7 +44,14 @@
 <script>
 export default {
   name: 'Movie',
-  props: ['film']
+  props: ['film'],
+//   methods: {
+//       flagExists(lang) {
+//           if(require('../assets/flag-${lang}.png'))
+//             return true;
+//           return false;
+//       }
+  //}
 }
 </script>
 
