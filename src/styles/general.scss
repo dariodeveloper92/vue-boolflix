@@ -5,7 +5,14 @@
 //2° Metodo
 @import '~bootstrap/scss/bootstrap';
 
+/* IMPORTO FONT ---------------------------*/
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
 
 /* IMPORTO FILE CON VARIABILI -------------*/
 @import './vars.scss';
 
+
+body {
+    font-family: $main-font;
+}

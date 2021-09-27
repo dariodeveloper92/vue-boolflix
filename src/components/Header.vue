@@ -1,24 +1,31 @@
 <template>
     <header>
         <div id="container-header">
-           <div class="logoBoolfix">
+           <a href="/" class="logoBoolfix">
                <h1> BOOLFIX </h1>
-            </div> 
-            <!-- <div  id="select">
-                <Search @performSearch="searchGenre" />
-            </div> -->
+            </a> 
+            <div class="col-12 inputbar" >
+                <Search @performSearch="searchMovie" />
+          </div>
         </div>
     </header>
 </template>
 
 <script>
-//import Search from './Search.vue'
+import Search from './Search.vue';
 
 export default {
   name: 'Header',
   components: {
-      //Search,
-  }
+      Search,
+  },
+   emits:['performSearch'],
+    data() {
+        return {
+            inputText:'',
+        }
+    },
+  
 }
 </script>
 
@@ -26,30 +33,26 @@ export default {
 <style scoped lang="scss">
     header {
         width: 100%;
-        height: 10vh;
+        height: 100%;
 
         #container-header {
             width: 100%;
             height: 100%;
             background-color: #49515f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             
             .logoBoolfix {
-                width: 100%;
+                width: 50%;
                 height: 100%;
                 color: red;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                              
             }
-            // #select {
-            //     width: 100%;
-            //     height: 100%;
-            //     background-color: white;
-            //     display: flex;
-            //     justify-content: flex-end;
-            //     align-items: center;
-            // }
+            
+            .inputbar {
+                width: 50%;
+                height: 100%;
+            }
         }
     }
 </style>

@@ -2,15 +2,14 @@
     <main>
         <section id="container-main">
           <div class="col-12" >
-                <Search @performSearch="searchMovie" />
-              </div>
-            <div class="box-movie row">
-              <!-- Stampo la lista dei film ottenuta tramite Axios -->
-              <div v-for="(movie, index) in filteredMoviesList" :key="index" class="lista col-12 col-md-6 col-lg-2">
-                  <Movie :film="movie" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
-              </div>
+            <Search @performSearch="searchMovie" />
+          </div>
+          <div class="box-movie row">
+            <!-- Stampo la lista dei film ottenuta tramite Axios -->
+            <div v-for="(movie, index) in filteredMoviesList&&filteredSerieTvList" :key="index" class="lista col-12 col-md-6 col-lg-2">
+                <Movie :film="movie" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
             </div>
-            
+          </div>
         </section>
     </main>
 </template>
@@ -29,12 +28,17 @@ export default {
   data() {
       return {
           APIurl: 'https://api.themoviedb.org/3/search/movie?api_key=426a628a380ecaa161275bf9fc54a798&query=String&language=it-IT',
+          apiKey: '79938ff93f3e31c05b660bffed55ce1f',
+          pathImg: 'https://image.tmdb.org/t/p/',
+          widithImg: 'http://image.tmdb.org/t/p/w500/',
           moviesList: [],
+          serieTvList: [],
           searchText: ''
       }
   },
   created() {
     this.getMovie(); 
+    this.getTvSeries();
   },
   computed: {
     filteredMoviesList() {
@@ -48,18 +52,46 @@ export default {
                   .includes(this.searchText.toLowerCase());
       })
       return filteredList;
+    },
+    filteredSerieTvList() {
+      if (this.searchText === "") {
+        return this.serieTvList;
+      }
+
+      let filteredList = this.serieTvList.filter( item => {
+        return item.title
+                  .toLowerCase()
+                  .includes(this.searchText.toLowerCase());
+      })
+      return filteredList;
     }
   },  
   methods: {
-    getMovie() {
+    getMovie(apiParams) {
       axios
-          .get(this.APIurl) //per lanciare l'array di oggetti contenuti nell'API
+          .get(this.APIurl + 'movie' +this.pathImg + this.widithImg, apiParams) //per lanciare l'array di oggetti contenuti nell'API
           .then( res => {
             console.log(res.data.results);
             this.moviesList = res.data.results;
           })
     },
+    getTvSeries(apiParams) {
+      axios
+          .get(this.APIurl + 'tv' +this.pathImg + this.widithImg, apiParams) //per lanciare l'array di oggetti contenuti nell'API
+          .then( res => {
+            console.log(res.data.results);
+            this.serieTvList = res.data.results;
+          })
+    },
     searchMovie(text) {
+      const paramsobj = {
+        params: {
+          api_key: this.apiKey,
+          query: this.searchText,
+        }
+      };
+      this.getMovie(paramsobj),
+      this.getTvSeries(paramsobj),
       console.log(text);
       this.searchText = text;
     }

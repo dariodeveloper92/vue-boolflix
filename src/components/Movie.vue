@@ -3,7 +3,7 @@
         <ul>
             <li>
                 <div class="cardMovie">
-                    <!-- <img class="img-fluid mb-3" :src="film.poster_path" :alt="film.name"> -->
+                    <img class="img-fluid mb-3" :src="film.backdrop_path" :alt="film.name">
                     <h2> Title: {{ film.title }} </h2>
                     <h3> Original title: {{ film.original_title }} </h3>
                     <h4> language: {{ film.original_language }} </h4>
@@ -49,7 +49,7 @@ export default {
                     padding: 10px 10px;
 
                     img {
-                        width: 100px;
+                        width: 50%;
                         object-fit: contain;
                         vertical-align: middle;
                     }

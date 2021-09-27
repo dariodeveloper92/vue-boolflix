@@ -6,6 +6,7 @@
             class="form-control"
             placeholder="Search movie"
             v-model="inputText"
+            @keyup.enter="$emit('performSearch', inputText)"
             >
         </div>
         <div class="mx-3">
