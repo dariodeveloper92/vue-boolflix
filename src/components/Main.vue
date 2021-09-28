@@ -5,10 +5,18 @@
             <Search @performSearch="searchMovie" />
           </div>
           <div class="box-movie row">
+            <h2> Films </h2>
             <!-- Stampo la lista dei film ottenuta tramite Axios -->
-            <div v-for="(movie, index) in filteredMoviesList&&filteredSerieTvList" :key="index" class="lista col-12 col-md-6 col-lg-2">
+            <ul v-for="movie in filteredMoviesList" :key="movie.id" class="lista col-12 col-md-6 col-lg-2">
                 <Movie :film="movie" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
-            </div>
+            </ul>
+          </div>
+          <div class="box-movie row">
+            <h2> Series </h2>
+            <!-- Stampo la lista delle serie tv ottenuta tramite Axios -->
+            <ul v-for="tv in filteredSerieTvList" :key="tv.id" class="lista col-12 col-md-6 col-lg-2">
+                <Movie :film="tv" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
+            </ul>
           </div>
         </section>
     </main>
@@ -31,8 +39,7 @@ export default {
           apiKey: '79938ff93f3e31c05b660bffed55ce1f',
           pathImg: 'https://image.tmdb.org/t/p/',
           widithImg: 'http://image.tmdb.org/t/p/w500/',
-          //language: 'https://www.countryflags.io/jp/flat/64.png',
-          moviesList: [],
+           moviesList: [],
           serieTvList: [],
           searchText: ''
       }

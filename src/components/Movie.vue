@@ -6,33 +6,36 @@
                     <div class="image_first prima">
                         <div class="box_uno">
                             <img 
-                            class="img-fluid mb-3"
-                            v-if="film.poster_path!=null"
-                            :src="'https://image.tmdb.org/t/p/w342' 
-                            + film.poster_path"
-                            :alt="film.name"
+                                class="img-fluid mb-3 copertina"
+                                v-if="film.poster_path"
+                                :src="`https://image.tmdb.org/t/p/w342${film.poster_path}`"
+                                :alt="film.title ? film.title : film.name" 
                             >
                             <img 
-                                v-else src="../assets/placeholder.png"
+                                v-else
+                                src="../assets/flag/placeholder.png"
+                                class="img-fluid mb-3 copertina"
+                                :alt="`Copertina${film.title ? film.title : film.name}`"
+                                
                             >
                         </div>
                     </div>
                     <div class="image_second prima">
                         <div class="box_due">
-                            <h2> Title: {{ film.title }} </h2>
-                            <h3> Original title: {{ film.original_title }} </h3>
-                            <h4> language: {{ film.original_language }} </h4>
-                            <h5> vote: {{ film.vote_average }}
+                            <li>
+                                <h2> Title: {{ film.title ? film.title : film.name}} </h2>
+                                <h3> Original title: {{ film.original_title }} </h3>
                                 <img 
-                                    class=" flag img-fluid mb-3"
-                                    :src="'https://www.countryflags.io/gb/flat/64.png'"
-                                    :alt="film.name"
+                                    class="flag"
+                                    v-if="availableFlags.includes(film.original_language)"
+                                    :src="require(`../assets/flag/${film.original_language}.png`)" alt=""
                                 >
-                                <!-- <img 
-                                    v-if="flagExists(film.original_language)"
-                                    :src="require('../assets/flag-${lang}.png' + film.original_language + '.png')"
-                                > -->
-                            </h5>
+                                <p v-else> {{ film.original_language }}</p>
+                                <!-- <h5> vote: {{ film.vote_average }}</h5> -->
+                                <div>
+                                    <i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'"></i>
+                                </div>
+                            </li>
                         </div>
                     </div>
                 </div>
@@ -44,14 +47,17 @@
 <script>
 export default {
   name: 'Movie',
-  props: ['film'],
-//   methods: {
-//       flagExists(lang) {
-//           if(require('../assets/flag-${lang}.png'))
-//             return true;
-//           return false;
-//       }
-  //}
+    data: function() {
+        return {
+            availableFlags: ['it' , 'en', 'cn', 'es', 'pt', 'fr', 'ja', 'pl' ]
+        }
+    },
+    methods: {
+        getVote() {
+            return Math.ceil(this.film.vote_average / 2)
+        }
+    },
+props: ['film'],
 }
 </script>
 
@@ -102,17 +108,17 @@ export default {
                         }
                     }
 
-                    img {
+                    .copertina {
                         width: 100%;
                         object-fit: contain;
                         vertical-align: middle;
-                    
                     }
-                        .flag {
-                            width: 30px;
-                            object-fit: contain;
-                        }
-
+                    
+                    .flag {
+                        width: 30px;
+                        object-fit: contain;
+                    }
+                    
                     h2 {
                         color: white;
                         font-size: 10px;

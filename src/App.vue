@@ -2,7 +2,7 @@
   <div id="app">
     <Header />
 
-    <Main />
+    <Main :filteredMoviesList="moviesList" :filteredSerieTvList="serieTvList"/>
   </div>
 </template>
 
