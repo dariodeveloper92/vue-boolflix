@@ -83,7 +83,7 @@ props: ['film'],
 
                 .cardMovie {
                     //background-color: transparent;
-                    width: 300px;
+                    width: 200px;
                     height: 300px;
                     perspective: 1000px;
                     background-color: #49515f;
@@ -132,11 +132,16 @@ props: ['film'],
                             align-content: space-around;
                             padding: 50px;
                         }
+                        li {
+                            //display: flex;
+                            text-decoration: none;
+                        }
                         
                     }
                     
                     .copertina {
                         width: 100%;
+                        height: 100%;
                         object-fit: contain;
                         vertical-align: middle;
                     }

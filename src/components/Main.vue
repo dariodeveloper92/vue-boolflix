@@ -11,7 +11,7 @@
                 <Movie :film="movie" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
             </div>
           </div>
-          <div class="box-movie row">
+          <div class="box-serieTv row">
             <h2> Series </h2>
             <!-- Stampo la lista delle serie tv ottenuta tramite Axios -->
             <div v-for="tv in filteredSerieTvList" :key="tv.id" class="lista col-12 col-md-6 col-lg-2">
@@ -111,30 +111,25 @@ export default {
 <style scoped lang="scss">
     main {
         width: 100%;
-        height: 90vh;
+        //height: 100%;
         background-color: #1A253A;
         position: absolute;
 
         #container-main {
             width: 100%;
-            height: 100%;
-             padding: 30px;
+            padding: 30px;
             // display: flex;
             // justify-content: space-around;
             // position: relative;
             
-            .box-movie {
+            .box-movie, .box-serieTv {
                 width: 100%;
                 height: 100%;
-                background-color: white;
+                //background-color: white;
                 position: relative;
                 // display: flex;
                 // justify-content: space-around;
                 // align-items: center;
-            
-              .lista {
-                display: flex;
-              }
             }
 
         }
