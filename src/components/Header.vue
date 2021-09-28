@@ -2,7 +2,7 @@
     <header>
         <div id="container-header">
            <a href="/" class="logoBoolfix">
-               <h1> BOOLFIX </h1>
+               <h1 class="line"> BOOLFIX </h1>
             </a> 
             <div class="col-12 inputbar" >
                 <Search @performSearch="searchMovie" />
@@ -25,6 +25,12 @@ export default {
             inputText:'',
         }
     },
+    methods: {
+        searchMovie(filter) {
+            this.inputText = filter;
+            this.$emit('performSearch', this.inputText); 
+        }
+    }
   
 }
 </script>
@@ -42,6 +48,10 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            a {
+                text-decoration: none;
+            }
             
             .logoBoolfix {
                 width: 50%;

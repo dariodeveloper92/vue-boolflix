@@ -30,7 +30,7 @@
                                         :src="require(`../assets/flag/${film.original_language}.png`)" alt=""
                                     >
                                     <p v-else> {{ film.original_language }}</p>
-                                    <!-- <h5> vote: {{ film.vote_average }}</h5> -->
+                                    <h5> Overview: {{ film.overview }}</h5>
                                     <div>
                                         <i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'"></i>
                                     </div>
@@ -79,14 +79,15 @@ props: ['film'],
 
             li {
                 position: relative;
-                //display: flex;
-
+                list-style: none;
+                
                 .cardMovie {
                     //background-color: transparent;
-                    width: 200px;
+                    width: 300px;
                     height: 300px;
                     perspective: 1000px;
                     background-color: #49515f;
+                    padding: 5px;
                     
                     .container-image {
                         position: relative;
@@ -130,11 +131,9 @@ props: ['film'],
                            display: flex;
                             justify-items: center;
                             align-content: space-around;
-                            padding: 50px;
                         }
                         li {
-                            //display: flex;
-                            text-decoration: none;
+                            list-style: none;
                         }
                         
                     }
@@ -161,7 +160,7 @@ props: ['film'],
                     }
                     h4 {
                         color: lightblue;
-                        font-size: 10px;
+                        font-size: 12px;
                     }
                     h5 {
                         color: white;
