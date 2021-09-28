@@ -7,16 +7,16 @@
           <div class="box-movie row">
             <h2> Films </h2>
             <!-- Stampo la lista dei film ottenuta tramite Axios -->
-            <ul v-for="movie in filteredMoviesList" :key="movie.id" class="lista col-12 col-md-6 col-lg-2">
+            <div v-for="movie in filteredMoviesList" :key="movie.id" class="lista col-12 col-md-6 col-lg-2">
                 <Movie :film="movie" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
-            </ul>
+            </div>
           </div>
           <div class="box-movie row">
             <h2> Series </h2>
             <!-- Stampo la lista delle serie tv ottenuta tramite Axios -->
-            <ul v-for="tv in filteredSerieTvList" :key="tv.id" class="lista col-12 col-md-6 col-lg-2">
+            <div v-for="tv in filteredSerieTvList" :key="tv.id" class="lista col-12 col-md-6 col-lg-2">
                 <Movie :film="tv" /> <!-- cicla gli elementi contenuti nella componente Disc che mi sono creato -->
-            </ul>
+            </div>
           </div>
         </section>
     </main>
@@ -128,9 +128,9 @@ export default {
                 height: 100%;
                 background-color: white;
                 position: relative;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
+                // display: flex;
+                // justify-content: space-around;
+                // align-items: center;
             
               .lista {
                 display: flex;

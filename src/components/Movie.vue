@@ -3,7 +3,7 @@
         <ul>
             <li>
                 <div class="cardMovie">
-                    <div class="image_first prima">
+                    <div class="container-image">
                         <div class="box_uno">
                             <img 
                                 class="img-fluid mb-3 copertina"
@@ -19,23 +19,23 @@
                                 
                             >
                         </div>
-                    </div>
-                    <div class="image_second prima">
                         <div class="box_due">
-                            <li>
-                                <h2> Title: {{ film.title ? film.title : film.name}} </h2>
-                                <h3> Original title: {{ film.original_title }} </h3>
-                                <img 
-                                    class="flag"
-                                    v-if="availableFlags.includes(film.original_language)"
-                                    :src="require(`../assets/flag/${film.original_language}.png`)" alt=""
-                                >
-                                <p v-else> {{ film.original_language }}</p>
-                                <!-- <h5> vote: {{ film.vote_average }}</h5> -->
-                                <div>
-                                    <i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'"></i>
-                                </div>
-                            </li>
+                            <ul>
+                                <li>
+                                    <h2> Title: {{ film.title ? film.title : film.name}} </h2>
+                                    <h3> Original title: {{ film.original_title }} </h3>
+                                    <img 
+                                        class="flag"
+                                        v-if="availableFlags.includes(film.original_language)"
+                                        :src="require(`../assets/flag/${film.original_language}.png`)" alt=""
+                                    >
+                                    <p v-else> {{ film.original_language }}</p>
+                                    <!-- <h5> vote: {{ film.vote_average }}</h5> -->
+                                    <div>
+                                        <i v-for="n in 5" :key="n" class="fa-star" :class="(n <= getVote()) ? 'fas' : 'far'"></i>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -73,41 +73,68 @@ props: ['film'],
         //align-items: center;
         
         ul {
-            //display: flex;
+            display: flex;
+            justify-content: space-around;
             position: relative;
 
             li {
                 position: relative;
-                display: flex;
+                //display: flex;
 
                 .cardMovie {
+                    //background-color: transparent;
+                    width: 300px;
+                    height: 300px;
+                    perspective: 1000px;
                     background-color: #49515f;
-                    width: 100%;
-                    height: 200px;
-                    position: relative;
-                    padding: 10px 10px;
-                    display:inline-block;
-
-                    .image_first {
-                        display: inline-block;
-                        cursor: pointer;
-
-                        &:hover,
-                        &:active {
-                            display: none;
-                        }
+                    
+                    .container-image {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                        transition: transform 0.6s;
+                        transform-style: preserve-3d;
+                        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
                     }
 
-                    .image_second {
-                        display: inline-block;
-                        cursor: pointer;
+                    .container-image {
+                        &:hover
+                    {
+                        transform: rotateY(180deg);
+                    }
+                    }
+                    
 
-                        &:hover,
-                        &:active {
-                            display: inline-block;
-                        }
+                    .box_uno, .box_due {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        -webkit-backface-visibility: hidden;
+                        backface-visibility: hidden;
                     }
 
+                    .box_uno {
+                        background-color: #49515f;
+                    }
+
+                    .box_due {
+                        background-color: #49515f;
+                        color: white;
+                        transform: rotateY(180deg);
+                        // display: flex;
+                        // justify-content: center;
+                        // align-items:center;
+
+                        ul {
+                           display: flex;
+                            justify-items: center;
+                            align-content: space-around;
+                            padding: 50px;
+                        }
+                        
+                    }
+                    
                     .copertina {
                         width: 100%;
                         object-fit: contain;

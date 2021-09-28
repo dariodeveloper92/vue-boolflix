@@ -2,11 +2,11 @@
     <form class="d-flex my-5">
         <div class="flex-grow-1">
             <input 
-            type="text"
-            class="form-control"
-            placeholder="Search movie"
-            v-model="inputText"
-            @keyup.enter="$emit('performSearch', inputText)"
+                type="text"
+                class="form-control"
+                placeholder="Search movie"
+                v-model="inputText"
+                @keyup.enter="$emit('performSearch', inputText)"
             >
         </div>
         <div class="mx-3">
